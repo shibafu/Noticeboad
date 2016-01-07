@@ -1,0 +1,32 @@
+#!/usr/bin/python
+# --coding:utf8--
+import logging
+import cgi
+import cgitb
+cgitb.enable()
+
+import Sql
+
+
+
+class InputFormCls:
+    def __init__(self):
+
+        print "Content-Type: text/html\n\n"
+
+        ht1 = Sql.Html_tagPot()
+
+        form = cgi.FieldStorage()
+
+        ht1.tagPotin("<html>\n<body>\n\n")
+
+        ht1.tagPotin("<p>Result</p>\n")
+
+        if(form["name"].value != ""):
+        ht1.tagPotin("<p>"+form["name"].value +"</p>\n")
+
+        ht1.tagPotin("<p>"+form["kanso"].value +"</p>\n")
+
+        ht1.tagPotin("</body></html>")
+
+        print(ht1.tagPotout())

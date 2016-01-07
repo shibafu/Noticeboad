@@ -1,0 +1,45 @@
+#!/usr/bin/python
+#-- coding: utf-8 --
+
+import MySQLdb
+#import mysql.connector
+class MySQLdbConn:
+    def __init__(self):
+        self.connection = MySQLdb.connect(host="localhost",
+                             port=3306,
+                             db="test",
+                             user="root",
+                             passwd="4980glassland",
+                             charset="utf8")
+
+        self.cursor = self.connection.cursor()
+
+#私見データ
+    def querySelect(self,query):
+        pref_cf = 100
+        rowsResult = ""
+        #擬似定数
+        Final_RecordNum = 40
+
+        #クエリ実行
+        self.cursor.execute(query)
+        self.connection.commit()
+
+        #Sqlの結果を保存するメンバ変数
+        SqlResult = Final_RecordNum*[4*[""]]
+
+        #Sql列代入ループ
+        rows = self.cursor.fetchall()
+        for row in rows:
+             i = 0
+             SqlResult[i][0] = row[0]
+             SqlResult[i][1] = row[1]
+             SqlResult[i][2] = row[2]
+             SqlResult[i][3] = row[3]
+             i = i+1
+
+        return SqlResult
+
+    def close(self):
+        self.cursor.close()
+        self.connection.close()

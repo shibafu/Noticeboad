@@ -1,0 +1,41 @@
+#!/usr/bin/python
+# --coding:utf8--
+import logging
+import cgi
+import cgitb
+cgitb.enable()
+
+import Sql
+
+class InputBoxCls:
+    def __init__(self):
+
+        ht1 = Sql.Html_tagPot()
+
+        ht1.tagPotin("<html>\n")
+        ht1.tagPotin("<head>\n")
+        ht1.tagPotin("<meta http-equiv=\"Content-Type\""
+                   + "content=\"text/html; charset=utf-8\">\n")
+        ht1.tagPotin("</head>\n")
+        ht1.tagPotin("<body>\n")
+        ht1.tagPotin("<p>インプットフォーム</p>")
+    
+        ht1.tagPotin("<form name = \"Form1\" method=\"POST\" "
+                   + "action=\"/cgi-bin/Sql.py\">")
+    
+        ht1.tagPotin("<input type =\"text\" name=\"name\""
+                   + "size=\"40\">")
+        ht1.tagPotin("<p>")
+        ht1.tagPotin("<textarea name =\"kanso\" rows=\"4\""
+                   +"cols=\"40\">")
+
+        ht1.tagPotin("</textarea>")
+        ht1.tagPotin("<p>")
+        ht1.tagPotin("<input type =\"submit\""
+                   + " value=\"送信\"><input type =\"reset\""
+                   +" value=\"リセット\">")
+        ht1.tagPotin("</form>")
+        ht1.tagPotin("</body>")
+        ht1.tagPotin("</html>")
+
+        print(ht1.tagPotout())

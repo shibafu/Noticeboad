@@ -1,0 +1,66 @@
+#!/usr/bin/python --
+# coding:utf-8
+
+#pythonのインポートファイル　まとめてここに
+
+#外部ドライバやパッケージ
+import MySQLdb
+import cgi
+# enable debugging
+import cgitb
+cgitb.enable()
+
+print "Content-Type: text/html\n\n"
+
+#内部ファイル
+import Sql_con
+import InputForm
+import InputBox
+
+#Html文章の作成
+class Html_tagPot:
+    def __init__(self):
+        self.Html_tagStr =""
+    def tagPotin(self, Html_tag):
+        self.Html_tagStr = self.Html_tagStr + Html_tag 
+    def tagPotout(self):
+        return self.Html_tagStr
+
+
+if __name__ == "__main__":
+#MySQL接続
+    mainX_Sql = Sql_con.MySQLdbConn()
+
+    SqlQuery = "SELECT * FROM Test;"
+    #クエリ実行
+    mainX_Result = mainX_Sql.querySelect(SqlQuery);
+
+
+    #Html文作成
+    Ht = Html_tagPot()
+  #  Ht.tagPotin("Content-Type: text/html\n\n")
+
+  #ヘッダー部分
+    Ht.tagPotin( "<html>\n")
+    Ht.tagPotin( "  <head>\n")
+    Ht.tagPotin( "    <meta http-equiv=\"Content-Type\"")
+    Ht.tagPotin("content=\"text/html; charset=utf-8\">\n")
+    Ht.tagPotin("  </head>\n")
+  
+    #ボディ部分
+    Ht.tagPotin("  <body>\n")
+    Ht.tagPotin("    <p>タグうちテスト</p>\n")
+  
+    #DB入力部分
+    mainX_InputBox = InputBox.InputBoxCls()
+
+    mainX_InputForm = InputForm.InputFormCls()
+
+   #DB出力部分
+    Ht.tagPotin("<p>" + str(mainX_Result[0][0]) +"</p>\n")
+    Ht.tagPotin("  </body>\n")
+    Ht.tagPotin("</html>\n")
+
+    print(Ht.tagPotout()) 
+
+    mainX_Sql.close()

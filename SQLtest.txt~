@@ -1,0 +1,8 @@
+INSERT INTO test(Talkid,
+Talksentence,
+Datetime,
+Userid)
+ VALUES (999999,
+,"webからの入力だよ"
+,now() as Date
+,999999);
