@@ -5,14 +5,14 @@ import cgi
 import cgitb
 cgitb.enable()
 
-import Sql
+import SqlAppCore
 import Sql_con
 
 
 class InputFormCls:
     def __init__(self,SqlconnStruct):
 
-        ht1 = Sql.Html_tagPot()
+        ht1 = SqlAppCore.Html_tagPot()
 
         form = cgi.FieldStorage()
 

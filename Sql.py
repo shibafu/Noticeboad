@@ -14,6 +14,8 @@ cgitb.enable()
 import Sql_con
 import InputForm
 import InputBox
+import DBoutput
+
 
 #Html文章の作成
 class Html_tagPot:
@@ -39,6 +41,9 @@ if __name__ == "__main__":
     Ht.tagPotin( "  <head>\n")
     Ht.tagPotin( "    <meta http-equiv=\"Content-Type\"")
     Ht.tagPotin("content=\"text/html; charset=utf-8\">\n")
+    Ht.tagPotin(    "<script type=\"text/javascript\"\n")
+    Ht.tagPotin(    "src=\"./jQueryCore/jquery-2.2.0.js\">\n")
+    Ht.tagPotin( "</script>\n")
     Ht.tagPotin("  </head>\n")
   
     #ボディ部分
@@ -64,6 +69,8 @@ if __name__ == "__main__":
         i = i + 1
     #ループの増加タイミングで最後のmainx[i]が出力されないため
     #Ht.tagPotin("<p>" + str(mainX_Result[i][1].encode('utf8'))+"</p>\n")
+
+    DBoutput.DBoutputCls.doutput(mainX_Result)
 
     Ht.tagPotin("  </body>\n")
     Ht.tagPotin("</html>\n")
