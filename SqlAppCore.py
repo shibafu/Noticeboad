@@ -43,12 +43,16 @@ if __name__ == "__main__":
     HtHd.tagPotin(" content=\"text/html; charset=utf-8\">\n")
     HtHd.tagPotin(    "<script type=\"text/javascript\"\n")
     HtHd.tagPotin(    "src=\"./cgi-bin/jQueryCore/jquery-2.2.0.js\" charset=\"UTF-8\">\n")
+    HtHd.tagPotin( "</script>\n\n")
+
+    HtHd.tagPotin(    "<script type=\"text/javascript\"\n")
+    HtHd.tagPotin(    "src=\"./jQueryCore/jquery-2.2.0.js\" charset=\"UTF-8\">\n")
     HtHd.tagPotin( "</script>\n")
+
     HtHd.tagPotin("  </head>\n\n")
   
     #ボディ部分
     HtHd.tagPotin("  <body>\n")
-    HtHd.tagPotin("    <p>タグうちテスト</p>\n")
   
     print(HtHd.tagPotout())
 
@@ -57,7 +61,7 @@ if __name__ == "__main__":
 
     mainX_InputForm = InputForm.InputFormCls(mainX_Sql)
 
-    SqlQuery = "SELECT * FROM Test;"
+    SqlQuery = "SELECT * FROM NoticeSente;"
     #DB取得
     mainX_Result = mainX_Sql.querySelect(SqlQuery);
 

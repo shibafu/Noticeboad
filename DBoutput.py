@@ -28,8 +28,10 @@ class DBoutputCls:
             if(Raw_loop[i][1].encode('utf-8') != ''):
                 Ht.tagPotin("$(document).ready(function(){\n")
 
+                Ht.tagPotin("$('fieldset[name=FieldNameNum" + str(i) +  "]').hide();\n")
+
                 Ht.tagPotin("$('button[name=ButtonNameNum" +str(i)+"]').click(function(){\n")
-                Ht.tagPotin("$('fieldset[name=FieldNameNum" + str(i) +  "]').toggle(1000)\n")
+                Ht.tagPotin("$('fieldset[name=FieldNameNum" + str(i) +  "]').toggle(500)\n")
                 Ht.tagPotin("});\n")      
                 Ht.tagPotin("});\n\n")
                 i = i + 1
@@ -38,10 +40,10 @@ class DBoutputCls:
 
         for x in RawSentence:
             if(RawSentence[j][1].encode('utf-8') != ''):
-               Ht.tagPotin("<button name = ButtonNameNum" +str(j)+ ">ボタン</button>\n")
+               Ht.tagPotin("<button name = ButtonNameNum" +str(j)+ ">書き込み" +str(j+1)+ "</button>\n<br>\n")
 
                Ht.tagPotin( "<fieldset name =FieldNameNum" + str(j) +  ">\n")
-               Ht.tagPotin("<legend>ユーザー情報</legend>\n")
+               Ht.tagPotin("<legend>"+str(RawSentence[j][3].encode('utf-8'))+"</legend>\n")
 
                Ht.tagPotin("<p>")
                Ht.tagPotin(str(RawSentence[j][1].encode('utf-8')))

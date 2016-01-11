@@ -22,15 +22,15 @@ class InputFormCls:
             
 
             #DBにインサート            
-            insertQuery = "INSERT INTO Test(Talkid,"
+            insertQuery = "INSERT INTO NoticeSente(Talkid,"
             insertQuery += "Talksentence,"
             insertQuery += "Datetime,"
-            insertQuery += "Userid)"
+            insertQuery += "UserName)"
 
             insertQuery += "VALUES (999999"
             insertQuery += ",\""+ form["toukou"].value + "\""
             insertQuery += ",Date(now())"
-            insertQuery +=",999999);"
+            insertQuery +=",\""+ form["toukou"].value + "\");"
             SqlconnStruct.queryInsert(insertQuery)
             
 
