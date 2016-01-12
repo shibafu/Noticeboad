@@ -30,7 +30,7 @@ class InputFormCls:
             insertQuery += "VALUES (999999"
             insertQuery += ",\""+ form["toukou"].value + "\""
             insertQuery += ",Date(now())"
-            insertQuery +=",\""+ form["toukou"].value + "\");"
+            insertQuery +=",\""+ form["name"].value + "\");"
             SqlconnStruct.queryInsert(insertQuery)
             
 
